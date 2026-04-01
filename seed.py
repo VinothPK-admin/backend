@@ -1,11 +1,13 @@
-import asyncio
-from sqlalchemy.ext.asyncio import AsyncSession
-try:
-    from database import engine, SessionLocal
-    from models import Base, Category, Product
-except ImportError:
-    from backend.database import engine, SessionLocal
-    from backend.models import Base, Category, Product
+import sys
+import os
+
+# Add the current directory to sys.path to allow importing local modules
+current_dir = os.path.dirname(os.path.realpath(__file__))
+if current_dir not in sys.path:
+    sys.path.insert(0, current_dir)
+
+from database import engine, SessionLocal
+from models import Base, Category, Product
 
 async def seed_data():
     async with engine.begin() as conn:

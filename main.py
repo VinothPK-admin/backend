@@ -4,10 +4,15 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
 from typing import List
 
-try:
-    import models, schemas, database
-except ImportError:
-    from backend import models, schemas, database
+import sys
+import os
+
+# Add the current directory to sys.path to allow importing local modules
+current_dir = os.path.dirname(os.path.realpath(__file__))
+if current_dir not in sys.path:
+    sys.path.insert(0, current_dir)
+
+import models, schemas, database
 
 app = FastAPI(title="PK Multiserve API")
 

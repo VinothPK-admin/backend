@@ -1,8 +1,7 @@
 import asyncio
 from sqlalchemy.ext.asyncio import AsyncSession
-from backend.database import engine, SessionLocal
-from backend.models import Base, Category, Product
-from backend.database import SessionLocal, engine
+from database import engine, SessionLocal
+from models import Base, Category, Product
 
 async def seed_data():
     async with engine.begin() as conn:

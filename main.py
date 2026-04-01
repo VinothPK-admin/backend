@@ -4,14 +4,14 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
 from typing import List
 
-from backend import models, schemas, database
+import models, schemas, database
 
 app = FastAPI(title="PK Multiserve API")
 
 # CORS configuration for Next.js
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3001", "http://localhost:3000"],
+    allow_origins=["*"], # Allow any origin for production deployment
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

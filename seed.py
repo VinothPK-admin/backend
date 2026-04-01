@@ -1,7 +1,11 @@
 import asyncio
 from sqlalchemy.ext.asyncio import AsyncSession
-from database import engine, SessionLocal
-from models import Base, Category, Product
+try:
+    from database import engine, SessionLocal
+    from models import Base, Category, Product
+except ImportError:
+    from backend.database import engine, SessionLocal
+    from backend.models import Base, Category, Product
 
 async def seed_data():
     async with engine.begin() as conn:

@@ -4,7 +4,10 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
 from typing import List
 
-import models, schemas, database
+try:
+    import models, schemas, database
+except ImportError:
+    from backend import models, schemas, database
 
 app = FastAPI(title="PK Multiserve API")
 
